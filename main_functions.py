@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+import sys
 
 
 def create_server_connection(host_name, user_name, user_password):
@@ -40,7 +41,9 @@ def execute_query(connection, query):
         connection.commit()
         print("Query successful")
     except Error as err:
+        print(query)
         print(f"Error: '{err}'")
+        sys.exit()
 
 
 def read_query(connection, query):
